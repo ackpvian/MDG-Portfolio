@@ -1,4 +1,6 @@
-mdg-portfolio
-=============
+#Portfolio for MDG, IITR.
+=====================
 
-Mobile Development Group, IIT Roorkee - Portfolio
+This is the portfolio for MDG IIT Roorkee : A student group at IITR developing smartphone applications and hacks.
+
+Licensed under the MIT License
