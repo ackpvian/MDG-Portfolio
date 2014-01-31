@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Nanogallery with Vertical Preview</title>
+	<title>Team-MDG,IITR</title>
 	<script src="js/jquery-1.10.2.js"></script>
 	<script src="js/jquery.transit.js"></script>
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
@@ -10,12 +10,21 @@
 	<div class="title">
 		
 	</div>
-	<div class="nanogallery" data-thumb="vertical" data-show-title='true'>
+	<div class="nanogallery" data-thumb="vertical" data-show-title='true' style="margin-left:10px;"">
 		<ul>
 			<li data-title="Team #1">
-                <div class=".left-div ">
-				    <img src="http://placehold.it/2400x1400/3498db/eee" class="img"></div>
-                    <div class=.right-div >Description</div>
+                <div class="container" style="display:inline-block">
+                    <img src="http://placehold.it/2400x1400/3498db/eee" class="img">
+                    <div class="description">
+                        <h2>Name</h2>
+                        <p>
+                            Say something about yourself.
+                        </p>
+                    </div>
+                    <div><p  id="links">
+                            sommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesomme </p>
+                        </div>
+                </div>
 			</li>
 			<li  data-title="Team #2">
 				<img src="http://placehold.it/2400x1400/27ae60/eee" class="img">
@@ -111,11 +120,17 @@
 		//hook left and right arrow keypress
 		$(document).keydown(function(e){
 			if (e.keyCode == 37) { 
-				moveSlider(counter-2);
+                if(counter==1)
+                    moveSlider(lim-1-1);
+                else
+				    moveSlider(counter-2);
 				return false;
 			}
-			if (e.keyCode == 39&&counter<limit) { 
-				moveSlider(counter);
+			if (e.keyCode == 39) { 
+				if(counter<limit)
+                    moveSlider(counter);
+                else
+                    moveSlider(0);
 				return false;
 			}
 		});
