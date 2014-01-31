@@ -1,0 +1,234 @@
+<html>
+<head>
+	<title>Nanogallery with Vertical Preview</title>
+	<script src="js/jquery-1.10.2.js"></script>
+	<script src="js/jquery.transit.js"></script>
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+	<div class="title">
+		
+	</div>
+	<div class="nanogallery" data-thumb="vertical" data-show-title='true'>
+		<ul>
+			<li data-title="Team #1">
+				<img src="http://placehold.it/2400x1400/3498db/eee" class="img">
+			</li>
+			<li  data-title="Team #2">
+				<img src="http://placehold.it/2400x1400/27ae60/eee" class="img">
+			</li>
+			<li  data-title="Team #3">
+				<img src="http://placehold.it/2400x1400/c0392b/eee" class="img">
+			</li>
+			<li  data-title="Team #3">
+				<img src="http://placehold.it/2400x1400/8e44ad/eee" class="img">
+			</li>
+			<li>
+				<img src="http://placehold.it/2400x1400/e67e22/eee" class="img">
+			</li>
+			<li>
+				<img src="http://placehold.it/2400x1400/2c3e50/eee" class="img">
+			</li>
+			<li>
+				<img src="http://placehold.it/2400x1400/2980b9/eee" class="img">
+			</li>
+			<li>
+				<img src="http://placehold.it/2400x1400/7f8c8d/eee" class="img">
+			</li>
+			<li>
+				<img src="http://placehold.it/2400x1400/e67e22/eee" class="img">
+			</li>
+			<li>
+				<img src="http://placehold.it/2400x1400/16a085/eee" class="img">
+			</li>
+			<li>
+				<img src="http://placehold.it/2400x1400/bdc3c7/222" class="img">
+			</li>
+		</ul>
+	</div>
+	<div class="nanogallery-vertical-preview vcollapsed">
+		<div class="switch">
+			<i class="icon-chevron-left"></i>
+		</div>
+		<div class="thumbs">
+			<ul>
+				<li>
+					<img src="http://placehold.it/200x133/3498db/eee" >
+				</li>
+				<li>
+					<img src="http://placehold.it/200x133/27ae60/eee" >
+				</li>
+				<li>
+					<img src="http://placehold.it/200x133/c0392b/eee" >
+				</li>
+				<li>
+					<img src="http://placehold.it/200x133/8e44ad/eee" >
+				</li>
+				<li>
+					<img src="http://placehold.it/200x133/e67e22/eee" >
+				</li>
+				<li>
+					<img src="http://placehold.it/200x133/2c3e50/eee" >
+				</li>
+				<li>
+					<img src="http://placehold.it/200x133/2980b9/eee" >
+				</li>
+				<li>
+					<img src="http://placehold.it/200x133/7f8c8d/eee" >
+				</li>
+				<li>
+					<img src="http://placehold.it/200x133/e67e22/eee" >
+				</li>
+				<li>
+					<img src="http://placehold.it/200x133/16a085/eee" >
+				</li>
+				<li>
+					<img src="http://placehold.it/200x133/bdc3c7/222" >
+				</li>
+			</ul>
+		</div>
+	</div>
+	<script>
+
+	(function($) {
+		$.fn.hasScrollBar = function() {
+			return this.get(0) ? this.get(0).scrollWidth > this.innerWidth() : false;
+		}
+	})(jQuery);
+
+	$(document).ready(function(){
+		/* Initialize */
+		var counter = 1;
+		var limit = $(".nanogallery ul li").length;
+		var w = $(".nanogallery").width();
+		var h = $(".nanogallery").height();
+		$(".nanogallery ul li").css({width:w,height:0.7*h});
+        $(".img").css({width:w,height:0.7*h});
+        $(".nanogallery").css({width:w,height:0.7*h});
+		//hook left and right arrow keypress
+		$(document).keydown(function(e){
+			if (e.keyCode == 37) { 
+				moveSlider(counter-2);
+				return false;
+			}
+			if (e.keyCode == 39) { 
+				moveSlider(counter);
+				return false;
+			}
+		});
+
+		//initialize the title
+		if($(".nanogallery").data("show-title")==true){
+			$(".title").show();
+			$(".title").html($(".nanogallery ul li:first-child").data("title"));
+		}
+
+		$(".nanogallery ul li img").bind("click",function(){
+			var title = "";
+			if(counter>=limit){
+				$(".nanogallery ul").transition({
+					x:0
+				},1000*limit/2,"ease");
+				counter=1;
+				title = $(".nanogallery ul li:first-child").data("title");
+			}else{
+				$(".nanogallery ul").transition({
+					x:(w*-1*counter)
+				},1000,"ease");
+				counter+=1;
+				title = $(this).parent().next().data("title");
+			}
+			if(title==undefined) title = "&nbsp;";
+			$(".title").html(title);
+
+		});
+
+		//bind the click event for vertical switch
+		$(".nanogallery-vertical-preview .switch").bind("click",function(){
+			if($(".nanogallery-vertical-preview").hasClass("vcollapsed")){
+				$(".nanogallery-vertical-preview").transition({
+					x:170
+				},500,"snap")
+				$(this).html('<i class="icon-chevron-left"></i>');
+				$(".nanogallery-vertical-preview").removeClass("vcollapsed")
+			}else{
+				$(this).html('<i class="icon-chevron-right"></i>');
+				$(".nanogallery-vertical-preview").transition({
+					x:0
+				},500,"snap");
+				$(".nanogallery-vertical-preview").addClass("vcollapsed")
+			}
+		});
+
+		//click event for each thumbnail in vertical preview
+		$(".nanogallery-vertical-preview li").bind("click",function(){
+			var i = $(".nanogallery-vertical-preview li").index(this);
+			moveSlider(i);
+		});
+
+
+		//bind the click event for horizontal switch
+		$(".nanogallery-horizontal-preview .switch").bind("click",function(){
+			if($(".nanogallery-horizontal-preview").hasClass("vcollapsed")){
+				$(".nanogallery-horizontal-preview").transition({
+					y:160
+				},500,"snap")
+				$(this).html('<i class="icon-chevron-up"></i>');
+				$(".nanogallery-horizontal-preview").removeClass("vcollapsed")
+			}else{
+				$(this).html('<i class="icon-chevron-down"></i>');
+				$(".nanogallery-horizontal-preview").transition({
+					y:0
+				},500,"snap");
+				$(".nanogallery-horizontal-preview").addClass("vcollapsed")
+			}
+		});
+
+		//click event for each thumbnail in horizontal preview
+		$(".nanogallery-horizontal-preview li").bind("click",function(){
+			var i = $(".nanogallery-horizontal-preview li").index(this);
+			moveSlider(i);
+		});
+
+		//trigger collapse
+		$(".nanogallery-vertical-preview .switch").click();
+		$(".nanogallery-horizontal-preview .switch").click();
+
+		$(window).bind("resize",function(){
+			w = $(".nanogallery").width();
+			h = $(".nanogallery").height();
+			$(".nanogallery ul li").css({width:w,height:h});
+			moveSlider(counter-1);
+		})
+
+		//move the slider to the appropriate image
+		function moveSlider(i){
+			var title = $(".nanogallery ul li:nth-child("+(i+1)+")").data("title");
+			if(title==undefined) title = "&nbsp;";
+			$(".title").html(title);
+			
+			var time = Math.abs(counter-(i+1))/2;
+			if(time<1) time=1;
+			counter=i+1;
+			$(".nanogallery ul").transition({
+				x:(w*-1*i)
+			},1000*time,"ease");
+		}
+
+		//adjust the horizontal switch height because of Webkit's intelligent scrollbar hide feature
+		if($(".nanogallery-horizontal-preview .thumbs").hasScrollBar()){
+			$(".nanogallery-horizontal-preview .switch").css({
+				height:"30px",
+				lineHeight:"30px",
+				marginTop:"-30px"
+			});
+		}
+
+
+
+	});
+</script>
+
+</body>
+</html>
