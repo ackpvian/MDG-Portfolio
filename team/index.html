@@ -1,12 +1,13 @@
 <html>
 <head>
-	<title>MDG - IITR</title>
+	<title>Team-MDG,IITR</title>
 	<script src="js/jquery-1.10.2.js"></script>
 	<script src="js/jquery.transit.js"></script>
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
 </head>
 <body background="img/bg.jpg">
+<<<<<<< HEAD
 	<div class="nanogallery" data-thumb="vertical" data-show-title='true'>
 		<ul>
 			<li data-title="Team #1">
@@ -29,6 +30,47 @@
 
                     </div>
                 </div>
+=======
+	<div class="title">
+		
+	</div>
+	<div class="nanogallery" data-thumb="vertical" data-show-title='true' style="margin-left:10px;"">
+		<ul>
+			<li data-title="Team #1">
+                <div class="container" style="display:inline-block">
+                    <img src="http://placehold.it/2400x1400/3498db/eee" class="img">
+                    <div class="description">
+                        <h2>Name</h2>
+                        <p>
+                            Say something about yourself.
+                        </p>
+                    </div>
+                    <div><p  id="links">
+                            sommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesomme </p>
+                        </div>
+                </div>
+			</li>
+			<li  data-title="Team #2">
+				<img src="http://placehold.it/2400x1400/27ae60/eee" class="img">
+			</li>
+			<li  data-title="Team #3">
+				<img src="http://placehold.it/2400x1400/c0392b/eee" class="img">
+			</li>
+			<li  data-title="Team #3">
+				<img src="http://placehold.it/2400x1400/8e44ad/eee" class="img">
+			</li>
+			<li>
+				<img src="http://placehold.it/2400x1400/e67e22/eee" class="img">
+			</li>
+			<li>
+				<img src="http://placehold.it/2400x1400/2c3e50/eee" class="img">
+			</li>
+			<li>
+				<img src="http://placehold.it/2400x1400/2980b9/eee" class="img">
+			</li>
+			<li>
+				<img src="http://placehold.it/2400x1400/7f8c8d/eee" class="img">
+>>>>>>> 0e56b9beb67eea6489826a66fa4f5059a739eac6
 			</li>
 
 			<li data-title="Team #2">
@@ -112,6 +154,7 @@
 		//hook left and right arrow keypress
 		$(document).keydown(function(e){
 			if (e.keyCode == 37) { 
+<<<<<<< HEAD
 				if(counter>1) moveSlider(counter-2);
                 else moveSlider(limit-1);
 				return false;
@@ -119,6 +162,19 @@
 			if (e.keyCode == 39) { 
 				if(counter<limit) moveSlider(counter);
                 else moveSlider(0);
+=======
+                if(counter==1)
+                    moveSlider(lim-1-1);
+                else
+				    moveSlider(counter-2);
+				return false;
+			}
+			if (e.keyCode == 39) { 
+				if(counter<limit)
+                    moveSlider(counter);
+                else
+                    moveSlider(0);
+>>>>>>> 0e56b9beb67eea6489826a66fa4f5059a739eac6
 				return false;
 			}
 		});

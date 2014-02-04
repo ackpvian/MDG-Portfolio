@@ -41,7 +41,7 @@ body{
 		list-style-type: none;
 		min-width: 100%;
 		width: auto;
-		white-space:nowrap;
+		/*white-space:nowrap;*/
 	}
 
 	.nanogallery ul li{
@@ -256,6 +256,7 @@ body{
 
 .description{   
     width:400px;
+<<<<<<< HEAD
     margin-left:6px;
     font-family: 'Lato',Arial,sans-serif;
     line-height: 1.2;
@@ -280,4 +281,21 @@ body{
 font-family:"NHaasGroteskDSW01-65Md",sans-serif;
 
 color:#fff
+    margin-left:10px;
+    word-wrap: break-word;
+    font-family: 'Lato',Arial,sans-serif;
+    line-height: 1.4;
+    font-size: 20px;
+    font-size: 2rem;
+    font-weight: 300;
+    color: #999;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+
+#links
+{   
+    margin-left:20px;
+    width:100px;
+    word-wrap: break-word;
 }
