@@ -72,7 +72,7 @@ O<html>
 				github_username=github.substr(19,github.length);
 				//console.log("git:"+githubUsername);
 				list_item='<li data-title="Team #1"><h2 class="name">'+name+'</h2><div class="container" style="display:inline-block;">';
-				list_item+='<img src="./img/'+github_username+'.png" class="img">';
+				list_item+='<img src="https://raw.github.com/sdsmdg/portfolio/master/'+github_username+'.png" class="img">';
 				list_item+='<div class="description"><p>'+description+'</p></div>';
 				list_item+='<div class="links" style="display:block">'
 				if(github!=0) list_item+='<a href='+github+'><img src="img/ico/github-9.png" width="32" height="32"></a><br /><br />';
@@ -82,7 +82,7 @@ O<html>
 				if(lastfm!=0) list_item+='<a href='+lastfm+'><img src="img/ico/last-fm.png"></a><br /><br />';
 				list_item+='</div></div></li>'
 				document.getElementById('main_list').innerHTML+=list_item;
-				document.getElementById('vertical_preview_thumbs').innerHTML+='<li><img src="'+github_username+'"_thumb.png ></li>'
+				document.getElementById('vertical_preview_thumbs').innerHTML+='<li><img src="https://raw.github.com/sdsmdg/portfolio/master/'+github_username+'_thumb.png" ></li>'
 				console.log(list_item);
 			}
 			/* Initialize */
