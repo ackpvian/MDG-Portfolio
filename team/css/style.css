@@ -27,7 +27,7 @@ body{
 	/* Fullscreen Gallery Style */
 	.nanogallery{
 		position: absolute;
-		top:60px;
+		top:-30px;
 		width: 100%;
 		height: 100%;
         left: 180px;
@@ -41,7 +41,7 @@ body{
 		list-style-type: none;
 		min-width: 100%;
 		width: auto;
-		/*white-space:nowrap;*/
+		white-space:nowrap;
 	}
 
 	.nanogallery ul li{
@@ -256,7 +256,6 @@ body{
 
 .description{   
     width:400px;
-<<<<<<< HEAD
     margin-left:6px;
     font-family: 'Lato',Arial,sans-serif;
     line-height: 1.2;
@@ -278,24 +277,19 @@ body{
 }
 
 .name{
-font-family:"NHaasGroteskDSW01-65Md",sans-serif;
-
-color:#fff
+    font-family:'Lato',Arial,sans-serif;;
+    color:#fff
     margin-left:10px;
     word-wrap: break-word;
-    font-family: 'Lato',Arial,sans-serif;
-    line-height: 1.4;
-    font-size: 20px;
-    font-size: 2rem;
-    font-weight: 300;
-    color: #999;
+    font-size: 45px;
+    font-weight: 900;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+    line-height: 1.2em;
+    position:relative;
+    top:90px;
+    margin-left:10px;
+    color: #fff;
     -webkit-font-smoothing: subpixel-antialiased;
-}
-
-
-#links
-{   
-    margin-left:20px;
-    width:100px;
-    word-wrap: break-word;
+    position:relative;
+    top:20px;
 }

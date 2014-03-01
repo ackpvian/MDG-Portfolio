@@ -1,119 +1,15 @@
-<html>
+O<html>
 <head>
-	<title>Team-MDG,IITR</title>
+	<title>MDG - IITR</title>
 	<script src="js/jquery-1.10.2.js"></script>
 	<script src="js/jquery.transit.js"></script>
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
+	<script type="text/javascript" src="js/google-spreadsheet.js"></script>
 </head>
 <body background="img/bg.jpg">
-<<<<<<< HEAD
 	<div class="nanogallery" data-thumb="vertical" data-show-title='true'>
-		<ul>
-			<li data-title="Team #1">
-                <h2 class="name">Kishor Mohite</h2>
-                <div class="container" style="display:inline-block">
-                    <img src="./img/mohite.jpg" class="img">
-                    <div class="description">
-                        
-                        <p>
-                            Description here..<br>Description here..<br>Description here..<br>
-                            Description here..<br>Description here..<br>Description here..<br>
-                        </p>
-                    </div>
-                    <div class="links" style="display:block">
-                    <img src="img/ico/github-9.png" width="32" height="32"><br /><br />
-                    <img src="img/ico/facebook.png"><br /><br />
-                    <img src="img/ico/google+.png"><br /><br />
-                    <img src="img/ico/last-fm.png"><br /><br />
-                    <img src="img/ico/twitter.png">
-
-                    </div>
-                </div>
-=======
-	<div class="title">
-		
-	</div>
-	<div class="nanogallery" data-thumb="vertical" data-show-title='true' style="margin-left:10px;"">
-		<ul>
-			<li data-title="Team #1">
-                <div class="container" style="display:inline-block">
-                    <img src="http://placehold.it/2400x1400/3498db/eee" class="img">
-                    <div class="description">
-                        <h2>Name</h2>
-                        <p>
-                            Say something about yourself.
-                        </p>
-                    </div>
-                    <div><p  id="links">
-                            sommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesommesomme </p>
-                        </div>
-                </div>
-			</li>
-			<li  data-title="Team #2">
-				<img src="http://placehold.it/2400x1400/27ae60/eee" class="img">
-			</li>
-			<li  data-title="Team #3">
-				<img src="http://placehold.it/2400x1400/c0392b/eee" class="img">
-			</li>
-			<li  data-title="Team #3">
-				<img src="http://placehold.it/2400x1400/8e44ad/eee" class="img">
-			</li>
-			<li>
-				<img src="http://placehold.it/2400x1400/e67e22/eee" class="img">
-			</li>
-			<li>
-				<img src="http://placehold.it/2400x1400/2c3e50/eee" class="img">
-			</li>
-			<li>
-				<img src="http://placehold.it/2400x1400/2980b9/eee" class="img">
-			</li>
-			<li>
-				<img src="http://placehold.it/2400x1400/7f8c8d/eee" class="img">
->>>>>>> 0e56b9beb67eea6489826a66fa4f5059a739eac6
-			</li>
-
-			<li data-title="Team #2">
-                <h2>Shubham Singh</h2>
-                <div class="container" style="display:inline-block">
-                    <img src="./img/singh.jpg" class="img">
-                    <div class="description">
-                        
-                        <p>
-                            Description here..<br>Description here..<br>Description here..<br>
-                            Description here..<br>Description here..<br>Description here..<br>
-                        </p>
-                    </div>
-                    <div class="links" style="display:block">
-                    <img src="img/ico/github-9.png" width="32" height="32"><br /><br />
-                    <img src="img/ico/facebook.png"><br /><br />
-                    <img src="img/ico/google+.png"><br /><br />
-                    <img src="img/ico/last-fm.png"><br /><br />
-                    <img src="img/ico/twitter.png">
-
-                    </div>
-                </div>
-			</li>
-
-			<li data-title="Team #3">
-                <h2>Akshay Deshraj</h2>
-                <div class="container" style="display:inline-block">
-                    <img src="./img/deshraj.jpg" class="img">
-                    <div class="description">
-                        <p>
-                            Description here..<br>Description here..<br>Description here..<br>
-                            Description here..<br>Description here..<br>Description here..<br>
-                        </p>
-                    </div>
-                    <div class="links" style="display:block">
-                    <img src="img/ico/github-9.png" width="32" height="32"><br /><br />
-                    <img src="img/ico/facebook.png"><br /><br />
-                    <img src="img/ico/google+.png"><br /><br />
-                    <img src="img/ico/last-fm.png"><br /><br />
-                    <img src="img/ico/twitter.png">
-                    </div>
-                </div>
-			</li>
+		<ul id='main_list'>
 		</ul>
 	</div>
 	<div class="nanogallery-vertical-preview vcollapsed">
@@ -143,146 +39,173 @@
 	})(jQuery);
 
 	$(document).ready(function(){
-		/* Initialize */
-		var counter = 1;
-		var limit = $(".nanogallery ul li").length;
-		var w = $(".nanogallery").width();
-		var h = $(".nanogallery").height();
-		$(".nanogallery ul li").css({width:w,height:h});
-        $(".img").css({width:0.43*w,height:0.7*h});
-        $(".description").css({height:0.7*h});
-		//hook left and right arrow keypress
-		$(document).keydown(function(e){
-			if (e.keyCode == 37) { 
-<<<<<<< HEAD
-				if(counter>1) moveSlider(counter-2);
-                else moveSlider(limit-1);
-				return false;
+		localStorage.clear();
+		var sample_url = "https://docs.google.com/spreadsheet/pub?key=0Ap7Lt-7z_uYndDdtZXEtaG1sS1hCUkplM0NQNkNLeEE&output=html";
+		var url_parameter = document.location.search.split(/\?url=/)[1]
+		var url = url_parameter || sample_url;
+		var googleSpreadsheet = new GoogleSpreadsheet();
+		googleSpreadsheet.url(url);
+		value=null;
+		googleSpreadsheet.load(function(result) {
+			value=result;
+			//document.getElementById('main_list').innerHTML='<li data-title="Team #1"><h2 class="name">Kishor Mohite</h2><div class="container" style="display:inline-block;"><img src="./img/mohite.jpg" class="img"><div class="description"><p>Description here..<br>Description here..<br>Description here..<br>Description here..<br>Description here..<br>Description here..<br></p></div><div class="links" style="display:block"><img src="img/ico/github-9.png" width="32" height="32"><br /><br /><img src="img/ico/facebook.png"><br /><br /><img src="img/ico/google+.png"><br /><br /><img src="img/ico/last-fm.png"><br /><br /><img src="img/ico/twitter.png"></div></div></li>'
+			document.getElementById('main_list').innerHTML+=document.getElementById('main_list').innerHTML;
+			//console.log("inside:"+value['data']);
+			length = result['data']['length']/9-1;
+			console.log("Length:"+length);
+			for(i=0;i<length;i++)
+			{
+				name=result['data'][10+9*i];
+				description=result['data'][10+9*i+1];
+				github=result['data'][10+9*i+2];
+				facebook=result['data'][10+9*i+3];
+				twitter=result['data'][10+9*i+4];
+				gplus=result['data'][10+9*i+5];
+				stackof=result['data'][10+9*i+6];
+				lastfm=twitter=result['data'][10+9*i+7];
+				//console.log("Name "+i+": "+name+" "+description+" "+github+" "+facebook+" "+twitter+" "+gplus+" "+stackof+" "+lastfm);
+				github_username=github.substr(19,github.length);
+				//console.log("git:"+githubUsername);
+				list_item='<li data-title="Team #1"><h2 class="name">'+name+'</h2><div class="container" style="display:inline-block;">';
+				list_item+='<img src="./img/'+github_username+'.jpg" class="img">';
+				list_item+='<div class="description"><p>'+description+'</p></div>';
+				list_item+='<div class="links" style="display:block">'
+				if(github!=0) list_item+='<a href='+github+'><img src="img/ico/github-9.png" width="32" height="32"></a><br /><br />';
+				if(facebook!=0) list_item+='<a href='+facebook+'><img src="img/ico/facebook.png"></a><br /><br />';
+				if(twitter!=0) list_item+='<a href='+twitter+'><img src="img/ico/twitter.png"></a><br /><br />';
+				if(gplus!=0) list_item+='<a href='+gplus+'><img src="img/ico/google+.png"></a><br /><br />';
+				list_item+='</div></div></li>'
+				document.getElementById('main_list').innerHTML+=list_item;
+				console.log(list_item);
 			}
-			if (e.keyCode == 39) { 
-				if(counter<limit) moveSlider(counter);
-                else moveSlider(0);
-=======
-                if(counter==1)
-                    moveSlider(lim-1-1);
-                else
-				    moveSlider(counter-2);
-				return false;
-			}
-			if (e.keyCode == 39) { 
-				if(counter<limit)
-                    moveSlider(counter);
-                else
-                    moveSlider(0);
->>>>>>> 0e56b9beb67eea6489826a66fa4f5059a739eac6
-				return false;
-			}
-		});
-
-		$(".nanogallery ul li img").bind("click",function(){
-			var title = "";
-			if(counter>=limit){
-				$(".nanogallery ul").transition({
-					x:0
-				},1000*limit/2,"ease");
-				counter=1;
-				title = $(".nanogallery ul li:first-child").data("title");
-			}else{
-				$(".nanogallery ul").transition({
-					x:(w*-1*counter)
-				},1000,"ease");
-				counter+=1;
-				title = $(this).parent().next().data("title");
-			}
-			if(title==undefined) title = "&nbsp;";
-			$(".title").html(title);
-
-		});
-
-		//bind the click event for vertical switch
-		$(".nanogallery-vertical-preview .switch").bind("click",function(){
-			if($(".nanogallery-vertical-preview").hasClass("vcollapsed")){
-				$(".nanogallery-vertical-preview").transition({
-					x:170
-				},500,"snap")
-				$(this).html('<i class="icon-chevron-left"></i>');
-				$(".nanogallery-vertical-preview").removeClass("vcollapsed")
-			}else{
-				$(this).html('<i class="icon-chevron-right"></i>');
-				$(".nanogallery-vertical-preview").transition({
-					x:0
-				},500,"snap");
-				$(".nanogallery-vertical-preview").addClass("vcollapsed")
-			}
-		});
-
-		//click event for each thumbnail in vertical preview
-		$(".nanogallery-vertical-preview li").bind("click",function(){
-			var i = $(".nanogallery-vertical-preview li").index(this);
-			moveSlider(i);
-		});
-
-
-		//bind the click event for horizontal switch
-		$(".nanogallery-horizontal-preview .switch").bind("click",function(){
-			if($(".nanogallery-horizontal-preview").hasClass("vcollapsed")){
-				$(".nanogallery-horizontal-preview").transition({
-					y:160
-				},500,"snap")
-				$(this).html('<i class="icon-chevron-up"></i>');
-				$(".nanogallery-horizontal-preview").removeClass("vcollapsed")
-			}else{
-				$(this).html('<i class="icon-chevron-down"></i>');
-				$(".nanogallery-horizontal-preview").transition({
-					y:0
-				},500,"snap");
-				$(".nanogallery-horizontal-preview").addClass("vcollapsed")
-			}
-		});
-
-		//click event for each thumbnail in horizontal preview
-		$(".nanogallery-horizontal-preview li").bind("click",function(){
-			var i = $(".nanogallery-horizontal-preview li").index(this);
-			moveSlider(i);
-		});
-
-		//trigger collapse
-		$(".nanogallery-vertical-preview .switch").click();
-		$(".nanogallery-horizontal-preview .switch").click();
-
-		$(window).bind("resize",function(){
-			w = $(".nanogallery").width();
-			h = $(".nanogallery").height();
+			/* Initialize */
+			var counter = 1;
+			var limit = $(".nanogallery ul li").length;
+			var w = $(".nanogallery").width();
+			var h = $(".nanogallery").height();
 			$(".nanogallery ul li").css({width:w,height:h});
-			moveSlider(counter-1);
-		})
-
-		//move the slider to the appropriate image
-		function moveSlider(i){
-			var title = $(".nanogallery ul li:nth-child("+(i+1)+")").data("title");
-			if(title==undefined) title = "&nbsp;";
-			$(".title").html(title);
-			
-			var time = Math.abs(counter-(i+1))/2;
-			if(time<1) time=1;
-			counter=i+1;
-			$(".nanogallery ul").transition({
-				x:(w*-1*i)
-			},1000*time,"ease");
-		}
-
-		//adjust the horizontal switch height because of Webkit's intelligent scrollbar hide feature
-		if($(".nanogallery-horizontal-preview .thumbs").hasScrollBar()){
-			$(".nanogallery-horizontal-preview .switch").css({
-				height:"30px",
-				lineHeight:"30px",
-				marginTop:"-30px"
+	        $(".img").css({width:0.43*w,height:0.7*h});
+	        $(".description").css({height:0.7*h});
+	        w=0.9968*w;
+			//hook left and right arrow keypress
+			$(document).keydown(function(e){
+				if (e.keyCode == 37) { 
+					if(counter>1) moveSlider(counter-2);
+	                else moveSlider(limit-1);
+					return false;
+				}
+				if (e.keyCode == 39) { 
+					if(counter<limit) moveSlider(counter);
+	                else moveSlider(0);
+					return false;
+				}
 			});
-		}
+
+			$(".nanogallery ul li img").bind("click",function(){
+				var title = "";
+				if(counter>=limit){
+					$(".nanogallery ul").transition({
+						x:0
+					},1000*limit/2,"ease");
+					counter=1;
+					title = $(".nanogallery ul li:first-child").data("title");
+				}else{
+					$(".nanogallery ul").transition({
+						x:(w*-1*counter)
+					},1000,"ease");
+					counter+=1;
+					title = $(this).parent().next().data("title");
+				}
+				if(title==undefined) title = "&nbsp;";
+				$(".title").html(title);
+
+			});
+
+			//bind the click event for vertical switch
+			$(".nanogallery-vertical-preview .switch").bind("click",function(){
+				if($(".nanogallery-vertical-preview").hasClass("vcollapsed")){
+					$(".nanogallery-vertical-preview").transition({
+						x:170
+					},500,"snap")
+					$(this).html('<i class="icon-chevron-left"></i>');
+					$(".nanogallery-vertical-preview").removeClass("vcollapsed")
+				}else{
+					$(this).html('<i class="icon-chevron-right"></i>');
+					$(".nanogallery-vertical-preview").transition({
+						x:0
+					},500,"snap");
+					$(".nanogallery-vertical-preview").addClass("vcollapsed")
+				}
+			});
+
+			//click event for each thumbnail in vertical preview
+			$(".nanogallery-vertical-preview li").bind("click",function(){
+				var i = $(".nanogallery-vertical-preview li").index(this);
+				moveSlider(i);
+			});
+
+
+			//bind the click event for horizontal switch
+			$(".nanogallery-horizontal-preview .switch").bind("click",function(){
+				if($(".nanogallery-horizontal-preview").hasClass("vcollapsed")){
+					$(".nanogallery-horizontal-preview").transition({
+						y:160
+					},500,"snap")
+					$(this).html('<i class="icon-chevron-up"></i>');
+					$(".nanogallery-horizontal-preview").removeClass("vcollapsed")
+				}else{
+					$(this).html('<i class="icon-chevron-down"></i>');
+					$(".nanogallery-horizontal-preview").transition({
+						y:0
+					},500,"snap");
+					$(".nanogallery-horizontal-preview").addClass("vcollapsed")
+				}
+			});
+
+			//click event for each thumbnail in horizontal preview
+			$(".nanogallery-horizontal-preview li").bind("click",function(){
+				var i = $(".nanogallery-horizontal-preview li").index(this);
+				moveSlider(i);
+			});
+
+			//trigger collapse
+			$(".nanogallery-vertical-preview .switch").click();
+			$(".nanogallery-horizontal-preview .switch").click();
+
+			$(window).bind("resize",function(){
+				w = $(".nanogallery").width();
+				h = $(".nanogallery").height();
+				$(".nanogallery ul li").css({width:w,height:h});
+				moveSlider(counter-1);
+			})
+
+			//move the slider to the appropriate image
+			function moveSlider(i){
+				var title = $(".nanogallery ul li:nth-child("+(i+1)+")").data("title");
+				if(title==undefined) title = "&nbsp;";
+				$(".title").html(title);
+				
+				var time = Math.abs(counter-(i+1))/2;
+				if(time<1) time=1;
+				counter=i+1;
+				$(".nanogallery ul").transition({
+					x:(w*-1*i)
+				},1000*time,"ease");
+			}
+
+			//adjust the horizontal switch height because of Webkit's intelligent scrollbar hide feature
+			if($(".nanogallery-horizontal-preview .thumbs").hasScrollBar()){
+				$(".nanogallery-horizontal-preview .switch").css({
+					height:"30px",
+					lineHeight:"30px",
+					marginTop:"-30px"
+				});
+			}
 
 
 
 	});
+		});
 </script>
 
 </body>
