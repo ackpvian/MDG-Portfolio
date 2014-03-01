@@ -9,7 +9,7 @@ O<html>
 </head>
 <body background="img/bg.jpg">
 	<div class="nanogallery" data-thumb="vertical" data-show-title='true'>
-		<ul id='main_list'>
+		<ul id="main_list">
 		</ul>
 	</div>
 	<div class="nanogallery-vertical-preview vcollapsed">
@@ -17,16 +17,7 @@ O<html>
 			<i class="icon-chevron-left"></i>
 		</div>
 		<div class="thumbs">
-			<ul>
-				<li>
-					<img src="img/mohite.jpg" >
-				</li>
-				<li style="margin-top:10px;">
-					<img src="img/singh.jpg" >
-				</li><br/>
-				<li>
-					<img src="img/deshraj.jpg" >
-				</li>
+			<ul id="vertical_preview_thumbs">
 			</ul>
 		</div>
 	</div>
@@ -40,10 +31,12 @@ O<html>
 			return this.get(0) ? this.get(0).scrollWidth > this.innerWidth() : false;
 		}
 	})(jQuery);
-
+	String.prototype.splice = function( idx, rem, s ) {
+    return (this.slice(0,idx) + s + this.slice(idx + Math.abs(rem)));
+	};
 	$(document).ready(function(){
 		localStorage.clear();
-		var sample_url = "https://docs.google.com/spreadsheet/pub?key=0Ap7Lt-7z_uYndDdtZXEtaG1sS1hCUkplM0NQNkNLeEE&output=html";
+		var sample_url = "https://docs.google.com/spreadsheet/pub?key=0Ap7Lt-7z_uYndHByVVNLR2dPRW1PSlhNTzJEWDR5Zmc&output=html";
 		var url_parameter = document.location.search.split(/\?url=/)[1]
 		var url = url_parameter || sample_url;
 		var googleSpreadsheet = new GoogleSpreadsheet();
@@ -52,30 +45,44 @@ O<html>
 			value=result;
 			document.getElementById('main_list').innerHTML+=document.getElementById('main_list').innerHTML;
 			length = result['data']['length']/9-1;
-			console.log("Length:"+length);
+			console.log("Length:"+length+" "+result['data'][14]);
 			for(i=0;i<length;i++)
 			{
 				name=result['data'][10+9*i];
 				description=result['data'][10+9*i+1];
 				github=result['data'][10+9*i+2];
 				facebook=result['data'][10+9*i+3];
-				twitter=result['data'][10+9*i+4];
+				tweet=result['data'][10+9*i+4];
 				gplus=result['data'][10+9*i+5];
 				stackof=result['data'][10+9*i+6];
 				lastfm=twitter=result['data'][10+9*i+7];
-				//console.log("Name "+i+": "+name+" "+description+" "+github+" "+facebook+" "+twitter+" "+gplus+" "+stackof+" "+lastfm);
+				k=2;
+				for(j=25;j<description.length;j++)
+				{
+					if(description.charAt(j)==' ')
+						{
+							description=description.splice(j,0,'<br />');
+							j=25*k;
+							k++;
+						}
+				}
+				console.log("description:"+description);
+				console.log("Name "+i+": "+name+" "+description+" "+github+" "+facebook+" "+tweet+" "+gplus+" "+stackof+" "+lastfm);
+				console.log("twitter2:"+tweet);
 				github_username=github.substr(19,github.length);
 				//console.log("git:"+githubUsername);
 				list_item='<li data-title="Team #1"><h2 class="name">'+name+'</h2><div class="container" style="display:inline-block;">';
-				list_item+='<img src="./img/'+github_username+'.jpg" class="img">';
+				list_item+='<img src="./img/'+github_username+'.png" class="img">';
 				list_item+='<div class="description"><p>'+description+'</p></div>';
 				list_item+='<div class="links" style="display:block">'
 				if(github!=0) list_item+='<a href='+github+'><img src="img/ico/github-9.png" width="32" height="32"></a><br /><br />';
 				if(facebook!=0) list_item+='<a href='+facebook+'><img src="img/ico/facebook.png"></a><br /><br />';
-				if(twitter!=0) list_item+='<a href='+twitter+'><img src="img/ico/twitter.png"></a><br /><br />';
+				if(tweet!=0) list_item+='<a href='+tweet+'><img src="img/ico/twitter.png"></a><br /><br />';
 				if(gplus!=0) list_item+='<a href='+gplus+'><img src="img/ico/google+.png"></a><br /><br />';
+				if(lastfm!=0) list_item+='<a href='+lastfm+'><img src="img/ico/last-fm.png"></a><br /><br />';
 				list_item+='</div></div></li>'
 				document.getElementById('main_list').innerHTML+=list_item;
+				document.getElementById('vertical_preview_thumbs').innerHTML+='<li><img src="'+github_username+'"_thumb.png ></li>'
 				console.log(list_item);
 			}
 			/* Initialize */
