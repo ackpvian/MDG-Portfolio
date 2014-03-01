@@ -4,74 +4,12 @@ O<html>
 	<script src="js/jquery-1.10.2.js"></script>
 	<script src="js/jquery.transit.js"></script>
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+	<script type="text/javascript" src="js/google-spreadsheet.js"></script>
 	<link href="css/style.css" rel="stylesheet">
 </head>
 <body background="img/bg.jpg">
 	<div class="nanogallery" data-thumb="vertical" data-show-title='true'>
-		<ul>
-			<li data-title="Team #1">
-                <h2 class="name">Kishor Mohite</h2>
-                <div class="container" style="display:inline-block;">
-                    <img src="./img/mohite.jpg" class="img">
-                    <div class="description">
-                        
-                        <p>
-                            Description here..<br>Description here..<br>Description here..<br>
-                            Description here..<br>Description here..<br>Description here..<br>
-                        </p>
-                    </div>
-                    <div class="links" style="display:block">
-                    <img src="img/ico/github-9.png" width="32" height="32"><br /><br />
-                    <img src="img/ico/facebook.png"><br /><br />
-                    <img src="img/ico/google+.png"><br /><br />
-                    <img src="img/ico/last-fm.png"><br /><br />
-                    <img src="img/ico/twitter.png">
-
-                    </div>
-                </div>
-			</li>
-
-			<li data-title="Team #2">
-                <h2 class="name">Shubham Singh</h2>
-                <div class="container" style="display:inline-block">
-                    <img src="./img/singh.jpg" class="img">
-                    <div class="description">
-                        
-                        <p>
-                            Description here..<br>Description here..<br>Description here..<br>
-                            Description here..<br>Description here..<br>Description here..<br>
-                        </p>
-                    </div>
-                    <div class="links" style="display:block">
-                    <img src="img/ico/github-9.png" width="32" height="32"><br /><br />
-                    <img src="img/ico/facebook.png"><br /><br />
-                    <img src="img/ico/google+.png"><br /><br />
-                    <img src="img/ico/last-fm.png"><br /><br />
-                    <img src="img/ico/twitter.png">
-
-                    </div>
-                </div>
-			</li>
-
-			<li data-title="Team #3">
-                <h2 class="name">Akshay Deshraj</h2>
-                <div class="container" style="display:inline-block">
-                    <img src="./img/deshraj.jpg" class="img">
-                    <div class="description">
-                        <p>
-                            Description here..<br>Description here..<br>Description here..<br>
-                            Description here..<br>Description here..<br>Description here..<br>
-                        </p>
-                    </div>
-                    <div class="links" style="display:block">
-                    <img src="img/ico/github-9.png" width="32" height="32"><br /><br />
-                    <img src="img/ico/facebook.png"><br /><br />
-                    <img src="img/ico/google+.png"><br /><br />
-                    <img src="img/ico/last-fm.png"><br /><br />
-                    <img src="img/ico/twitter.png">
-                    </div>
-                </div>
-			</li>
+		<ul id='main_list'>
 		</ul>
 	</div>
 	<div class="nanogallery-vertical-preview vcollapsed">
@@ -93,6 +31,9 @@ O<html>
 		</div>
 	</div>
 	<script>
+		
+	</script>
+	<script>
 
 	(function($) {
 		$.fn.hasScrollBar = function() {
@@ -101,7 +42,43 @@ O<html>
 	})(jQuery);
 
 	$(document).ready(function(){
-		/* Initialize */
+		localStorage.clear();
+		var sample_url = "https://docs.google.com/spreadsheet/pub?key=0Ap7Lt-7z_uYndDdtZXEtaG1sS1hCUkplM0NQNkNLeEE&output=html";
+		var url_parameter = document.location.search.split(/\?url=/)[1]
+		var url = url_parameter || sample_url;
+		var googleSpreadsheet = new GoogleSpreadsheet();
+		googleSpreadsheet.url(url);
+		googleSpreadsheet.load(function(result) {
+			value=result;
+			document.getElementById('main_list').innerHTML+=document.getElementById('main_list').innerHTML;
+			length = result['data']['length']/9-1;
+			console.log("Length:"+length);
+			for(i=0;i<length;i++)
+			{
+				name=result['data'][10+9*i];
+				description=result['data'][10+9*i+1];
+				github=result['data'][10+9*i+2];
+				facebook=result['data'][10+9*i+3];
+				twitter=result['data'][10+9*i+4];
+				gplus=result['data'][10+9*i+5];
+				stackof=result['data'][10+9*i+6];
+				lastfm=twitter=result['data'][10+9*i+7];
+				//console.log("Name "+i+": "+name+" "+description+" "+github+" "+facebook+" "+twitter+" "+gplus+" "+stackof+" "+lastfm);
+				github_username=github.substr(19,github.length);
+				//console.log("git:"+githubUsername);
+				list_item='<li data-title="Team #1"><h2 class="name">'+name+'</h2><div class="container" style="display:inline-block;">';
+				list_item+='<img src="./img/'+github_username+'.jpg" class="img">';
+				list_item+='<div class="description"><p>'+description+'</p></div>';
+				list_item+='<div class="links" style="display:block">'
+				if(github!=0) list_item+='<a href='+github+'><img src="img/ico/github-9.png" width="32" height="32"></a><br /><br />';
+				if(facebook!=0) list_item+='<a href='+facebook+'><img src="img/ico/facebook.png"></a><br /><br />';
+				if(twitter!=0) list_item+='<a href='+twitter+'><img src="img/ico/twitter.png"></a><br /><br />';
+				if(gplus!=0) list_item+='<a href='+gplus+'><img src="img/ico/google+.png"></a><br /><br />';
+				list_item+='</div></div></li>'
+				document.getElementById('main_list').innerHTML+=list_item;
+				console.log(list_item);
+			}
+			/* Initialize */
 		var counter = 1;
 		var limit = $(".nanogallery ul li").length;
 		var w = $(".nanogallery").width();
@@ -109,6 +86,7 @@ O<html>
 		$(".nanogallery ul li").css({width:w,height:h});
         $(".img").css({width:0.43*w,height:0.7*h});
         $(".description").css({height:0.7*h});
+        w=0.9968*w
 		//hook left and right arrow keypress
 		$(document).keydown(function(e){
 			if (e.keyCode == 37) { 
@@ -226,6 +204,8 @@ O<html>
 
 
 
+      });
+		
 	});
 </script>
 
