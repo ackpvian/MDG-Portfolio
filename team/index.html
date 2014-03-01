@@ -9,74 +9,7 @@ O<html>
 </head>
 <body background="img/bg.jpg">
 	<div class="nanogallery" data-thumb="vertical" data-show-title='true'>
-<<<<<<< HEAD
 		<ul id='main_list'>
-=======
-		<ul>
-			<li data-title="Team #1">
-                <h2 class="name">Kishor Mohite</h2>
-                <div class="container" style="display:inline-block;">
-                    <img src="./img/mohite.jpg" class="img">
-                    <div class="description">
-                        
-                        <p>
-                            Description here..<br>Description here..<br>Description here..<br>
-                            Description here..<br>Description here..<br>Description here..<br>
-                        </p>
-                    </div>
-                    <div class="links" style="display:block">
-                    <img src="img/ico/github-9.png" width="32" height="32"><br /><br />
-                    <img src="img/ico/facebook.png"><br /><br />
-                    <img src="img/ico/google+.png"><br /><br />
-                    <img src="img/ico/last-fm.png"><br /><br />
-                    <img src="img/ico/twitter.png">
-
-                    </div>
-                </div>
-			</li>
-
-			<li data-title="Team #2">
-                <h2 class="name">Shubham Singh</h2>
-                <div class="container" style="display:inline-block">
-                    <img src="./img/singh.jpg" class="img">
-                    <div class="description">
-                        
-                        <p>
-                            Description here..<br>Description here..<br>Description here..<br>
-                            Description here..<br>Description here..<br>Description here..<br>
-                        </p>
-                    </div>
-                    <div class="links" style="display:block">
-                    <img src="img/ico/github-9.png" width="32" height="32"><br /><br />
-                    <img src="img/ico/facebook.png"><br /><br />
-                    <img src="img/ico/google+.png"><br /><br />
-                    <img src="img/ico/last-fm.png"><br /><br />
-                    <img src="img/ico/twitter.png">
-
-                    </div>
-                </div>
-			</li>
-
-			<li data-title="Team #3">
-                <h2 class="name">Akshay Deshraj</h2>
-                <div class="container" style="display:inline-block">
-                    <img src="./img/deshraj.jpg" class="img">
-                    <div class="description">
-                        <p>
-                            Description here..<br>Description here..<br>Description here..<br>
-                            Description here..<br>Description here..<br>Description here..<br>
-                        </p>
-                    </div>
-                    <div class="links" style="display:block">
-                    <img src="img/ico/github-9.png" width="32" height="32"><br /><br />
-                    <img src="img/ico/facebook.png"><br /><br />
-                    <img src="img/ico/google+.png"><br /><br />
-                    <img src="img/ico/last-fm.png"><br /><br />
-                    <img src="img/ico/twitter.png">
-                    </div>
-                </div>
-			</li>
->>>>>>> f7a533e0bbf6178b3d8c74ea2cf9637cfc1e9b4b
 		</ul>
 	</div>
 	<div class="nanogallery-vertical-preview vcollapsed">
@@ -106,7 +39,6 @@ O<html>
 	})(jQuery);
 
 	$(document).ready(function(){
-<<<<<<< HEAD
 		localStorage.clear();
 		var sample_url = "https://docs.google.com/spreadsheet/pub?key=0Ap7Lt-7z_uYndDdtZXEtaG1sS1hCUkplM0NQNkNLeEE&output=html";
 		var url_parameter = document.location.search.split(/\?url=/)[1]
@@ -145,44 +77,6 @@ O<html>
 				list_item+='</div></div></li>'
 				document.getElementById('main_list').innerHTML+=list_item;
 				console.log(list_item);
-=======
-		/* Initialize */
-		var counter = 1;
-		var limit = $(".nanogallery ul li").length;
-		var w = $(".nanogallery").width();
-		var h = $(".nanogallery").height();
-		$(".nanogallery ul li").css({width:w,height:h});
-        $(".img").css({width:0.43*w,height:0.7*h});
-        $(".description").css({height:0.7*h});
-		//hook left and right arrow keypress
-		$(document).keydown(function(e){
-			if (e.keyCode == 37) { 
-				if(counter>1) moveSlider(counter-2);
-                else moveSlider(limit-1);
-				return false;
-			}
-			if (e.keyCode == 39) { 
-				if(counter<limit) moveSlider(counter);
-                else moveSlider(0);
-				return false;
-			}
-		});
-
-		$(".nanogallery ul li img").bind("click",function(){
-			var title = "";
-			if(counter>=limit){
-				$(".nanogallery ul").transition({
-					x:0
-				},1000*limit/2,"ease");
-				counter=1;
-				title = $(".nanogallery ul li:first-child").data("title");
-			}else{
-				$(".nanogallery ul").transition({
-					x:(w*-1*counter)
-				},1000,"ease");
-				counter+=1;
-				title = $(this).parent().next().data("title");
->>>>>>> f7a533e0bbf6178b3d8c74ea2cf9637cfc1e9b4b
 			}
 			/* Initialize */
 			var counter = 1;
